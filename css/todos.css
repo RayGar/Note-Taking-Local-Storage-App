@@ -1,0 +1,169 @@
+* {
+  font-size: 1em;
+}
+
+body {
+  background: #cb356b; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #bd3f32,
+    #cb356b
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #bd3f32,
+    #cb356b
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  /*these two lines make the background responsive*/
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /*the font from Google Fonts*/
+  font-family: "Montserrat", sans-serif;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 3em !important;
+  background: #ffffff;
+  color: #ff0033;
+  margin: 0;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: bolder;
+  width: 97.27%;
+  position: relative; /*will make it act as the parent element for positioning coordinates of it's child elements*/
+}
+
+li {
+  background: #fff;
+  height: 40px;
+  line-height: 40px;
+  color: #666;
+  text-transform: none;
+}
+
+li:nth-child(2n) {
+  background: #f7f7f7;
+}
+
+li span {
+  height: 40px;
+  margin-right: 20px;
+  margin-left: 20px;
+  text-align: center;
+  color: black;
+  transition: 0.2s linear;
+}
+
+input {
+  font-size: 18px;
+  color: #2980b9;
+  background-color: #f7f7f7;
+  width: 100%;
+  padding: 13px 13px 13px 20px;
+  box-sizing: border-box;
+  border: 3px solid rgba(0, 0, 0, 0);
+}
+
+#container {
+  width: 1500px;
+  max-width: 1500px;
+  margin: 100px auto;
+  background: #f7f7f7;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  border-radius: 1.75%;
+}
+
+.completed {
+  color: gray;
+  text-decoration: line-through;
+}
+
+/*Styling fo the note taking section*/
+.note-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.note-header {
+  color: #ff0033;
+  margin: 0;
+  padding: 10px 20px;
+  text-transform: uppercase;
+}
+
+input[type="text"] {
+  font-size: 18px;
+  color: #2980b9;
+  background-color: #f7f7f7;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding: 13px 13px 13px 20px;
+  box-sizing: border-box;
+  border: 3px solid rgba(255, 20, 147, 0.6);
+}
+
+input[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* The next four selectors are a part of the other things inside the note module*/
+.note-list {
+  overflow-wrap: break-word;
+  width: 100%;
+  list-style: none;
+}
+
+li {
+  background: #fff;
+  height: 40px;
+  line-height: 20px;
+  color: #666;
+  text-transform: none;
+  font-size: 0.9em;
+  max-width: 100%; /*limit width */
+  word-break: break-all; /* wrap extended text*/
+}
+
+li:nth-child(2n) {
+  background: #f7f7f7;
+}
+
+/*The delete "button" inside a list item*/
+li span {
+  height: 215px;
+  padding: 3px 5px;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 30px;
+  border-radius: 50%; /* Make it a circle */
+  border: none;
+  text-align: justify;
+  color: white;
+  background-color: #ff0033;
+  transition: 0.2s linear;
+}
+
+#toggle-form {
+  position: absolute;
+  right: 10px;
+}
