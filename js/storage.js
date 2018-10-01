@@ -1,17 +1,14 @@
 let localStorage = window.localStorage;
 
-function generateId() {
-  let newId = Math.random()
-    .toString(36)
-    .substr(2);
-
-  while (storageGet(newId)) {
+const generateId = () => {
+  let newId;
+  do {
     newId = Math.random()
       .toString(36)
       .substr(2);
-  }
+  } while (storageGet(newId));
   return newId;
-}
+};
 
 function storageInsert(key, obj) {
   localStorage.setItem(key, obj);
@@ -29,21 +26,13 @@ $(document).ready(() => {
   localStorage = window.localStorage;
 
   //Load all.
-  for (let i = 0; i < localStorage.length; i++) {
-    let key = localStorage.key(i);
+  var keys = Object.keys(localStorage);
+  keys.forEach(key => {
+    //appendItem(localStorage.getItem(key), key);
     $("ul").append(
       "<li id='note-" + key + "'> <span>X</span> " + storageGet(key) + "</li>"
     );
-    console.log(
-      "The note with key: " +
-        key +
-        " and index #" +
-        i +
-        " has written: " +
-        storageGet(key) +
-        " has been loaded from memory."
-    );
-  }
+  });
 });
 
 //Click on X to delete Todo
@@ -90,10 +79,6 @@ $("input[type='text']").keypress(function(event) {
     $(this).val("");
 
     var ulId = $(".note-uls").attr("id");
-    var href = document.location.href;
-    var lastPathSegment = href.substr(href.lastIndexOf("/") + 1).slice(0, 4); //holds the name of the html page
-
-    console.log("lastPathSegment: " + lastPathSegment);
 
     //Create new element.
     $("#" + ulId).append(
