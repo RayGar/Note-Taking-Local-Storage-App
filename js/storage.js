@@ -1,36 +1,40 @@
-let localStorage = window.localStorage;
+const localStorage = {
+  value: window.localStorage,
 
-const generateId = () => {
-  let newId;
-  do {
-    newId = Math.random()
-      .toString(36)
-      .substr(2);
-  } while (storageGet(newId));
-  return newId;
+  storageInsert: function(key, obj) {
+    this.value.setItem(key, obj);
+  },
+
+  storageGet: function(key) {
+    return this.value.getItem(key);
+  },
+
+  storageRemove: function(key) {
+    this.value.removeItem(key);
+  },
+
+  generateId: function() {
+    let newId;
+    do {
+      newId = Math.random()
+        .toString(36)
+        .substr(2);
+    } while (storageGet(newId));
+    return newId;
+  }
 };
 
-function storageInsert(key, obj) {
-  localStorage.setItem(key, obj);
-}
-
-function storageGet(key) {
-  return localStorage.getItem(key);
-}
-
-function storageRemove(key) {
-  localStorage.removeItem(key);
-}
-
+//Event based function definitions need to exist outside of the object
 $(document).ready(() => {
-  localStorage = window.localStorage;
-
   //Load all.
-  var keys = Object.keys(localStorage);
+  var keys = Object.keys(localStorage.value);
   keys.forEach(key => {
-    //appendItem(localStorage.getItem(key), key);
     $("ul").append(
-      "<li id='note-" + key + "'> <span>X</span> " + storageGet(key) + "</li>"
+      "<li id='note-" +
+        key +
+        "'> <span>X</span> " +
+        localStorage.storageGet(key) +
+        "</li>"
     );
   });
 });
@@ -47,7 +51,7 @@ $("ul").on("click", "span", function(event) {
             .substr(5)
             .toString() +
           " has written: " +
-          storageGet(
+          localStorage.storageGet(
             $(this)
               .attr("id")
               .substr(5)
@@ -55,7 +59,7 @@ $("ul").on("click", "span", function(event) {
           ) +
           " has been deleleted from memory."
       );
-      localStorage.removeItem(
+      localStorage.value.removeItem(
         $(this)
           .attr("id")
           .slice(5)
@@ -86,7 +90,7 @@ $("input[type='text']").keypress(function(event) {
     );
 
     //Add to storage.
-    storageInsert(newId, todoText);
+    localStorage.storageInsert(newId, todoText);
   }
 });
 
