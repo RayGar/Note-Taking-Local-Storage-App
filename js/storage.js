@@ -19,7 +19,7 @@ const localStorage = {
       newId = Math.random()
         .toString(36)
         .substr(2);
-    } while (storageGet(newId));
+    } while (this.storageGet(newId));
     return newId;
   }
 };
@@ -77,7 +77,7 @@ $("input[type='text']").keypress(function(event) {
     let todoText = $(this).val();
 
     //Generate an unique ID.
-    let newId = generateId();
+    let newId = localStorage.generateId();
 
     //Reset Input.
     $(this).val("");
